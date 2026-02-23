@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo — Cafés Brasileiros</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --marrom-profundo: #2c1810;
+      --marrom-medio: #4a3528;
+      --creme: #f5f0e8;
+      --creme-escuro: #e8dfd0;
+      --verde-folha: #3d5c3d;
+      --verde-folha-claro: #5a7a5a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--creme);
+      color: var(--marrom-profundo);
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    header {
+      background: var(--marrom-profundo);
+      color: var(--creme);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(44, 24, 16, 0.2);
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
+      font-weight: 600;
+    }
+
+    header p {
+      margin-top: 0.35rem;
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    /* Catálogo */
+    .catalogo {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 4rem;
+    }
+
+    .catalogo-intro {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .catalogo-intro h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--marrom-medio);
+      font-weight: 500;
+    }
+
+    .catalogo-intro p {
+      color: var(--marrom-medio);
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    /* Grid de cards */
+    .grid-cafes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+
+    .card-cafe {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(44, 24, 16, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card-cafe:hover {
+      transform: scale(1.04);
+      box-shadow: 0 12px 32px rgba(44, 24, 16, 0.15);
+    }
+
+    .card-cafe-foto {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      background: var(--creme-escuro);
+    }
+
+    .card-cafe-body {
+      padding: 1.25rem 1.25rem 1.5rem;
+    }
+
+    .card-cafe-nome {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--marrom-profundo);
+      margin-bottom: 0.75rem;
+    }
+
+    .card-cafe-meta {
+      font-size: 0.85rem;
+      color: var(--marrom-medio);
+    }
+
+    .card-cafe-meta span {
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
+    .card-cafe-meta strong {
+      color: var(--marrom-profundo);
+      font-weight: 500;
+    }
+
+    .card-cafe-notas {
+      margin-bottom: 0.5rem;
+    }
+
+    .card-cafe-intensidade {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+
+    .card-cafe-intensidade strong {
+      font-size: 0.8rem;
+      color: var(--marrom-profundo);
+    }
+
+    .intensidade-barras {
+      display: flex;
+      gap: 3px;
+    }
+
+    .intensidade-barras span {
+      width: 8px;
+      height: 14px;
+      border-radius: 2px;
+      background: var(--creme-escuro);
+    }
+
+    .intensidade-barras span.ativo {
+      background: var(--verde-folha);
+    }
+
+    /* Responsivo */
+    @media (max-width: 900px) {
+      .grid-cafes {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.5rem;
+      }
+
+      .catalogo {
+        padding: 2rem 1rem 3rem;
+      }
+
+      .grid-cafes {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .card-cafe:hover {
+        transform: scale(1.02);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Cafés Brasileiros</h1>
+    <p>Origem, sabor e intensidade das principais regiões produtoras</p>
+  </header>
+
+  <main class="catalogo">
+    <div class="catalogo-intro">
+      <h2>Catálogo</h2>
+      <p>Selecione uma origem para conhecer o perfil do café</p>
+    </div>
+
+    <div class="grid-cafes">
+      <article class="card-cafe">
+        <img class="card-cafe-foto" src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=400&h=300&fit=crop" alt="Café Sul de Minas">
+        <div class="card-cafe-body">
+          <h3 class="card-cafe-nome">Sul de Minas</h3>
+          <div class="card-cafe-meta">
+            <span class="card-cafe-notas"><strong>Notas:</strong> Chocolate, caramelo, corpo encorpado</span>
+            <div class="card-cafe-intensidade">
+              <strong>Intensidade</strong>
+              <div class="intensidade-barras" aria-hidden="true">
+                <span class="ativo"></span><span class="ativo"></span><span class="ativo"></span><span class="ativo"></span><span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card-cafe">
+        <img class="card-cafe-foto" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&h=300&fit=crop" alt="Café Cerrado Mineiro">
+        <div class="card-cafe-body">
+          <h3 class="card-cafe-nome">Cerrado Mineiro</h3>
+          <div class="card-cafe-meta">
+            <span class="card-cafe-notas"><strong>Notas:</strong> Frutado, doce, acidez média</span>
+            <div class="card-cafe-intensidade">
+              <strong>Intensidade</strong>
+              <div class="intensidade-barras" aria-hidden="true">
+                <span class="ativo"></span><span class="ativo"></span><span class="ativo"></span><span></span><span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card-cafe">
+        <img class="card-cafe-foto" src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&h=300&fit=crop" alt="Café Mogiana">
+        <div class="card-cafe-body">
+          <h3 class="card-cafe-nome">Mogiana</h3>
+          <div class="card-cafe-meta">
+            <span class="card-cafe-notas"><strong>Notas:</strong> Chocolate, nozes, final longo</span>
+            <div class="card-cafe-intensidade">
+              <strong>Intensidade</strong>
+              <div class="intensidade-barras" aria-hidden="true">
+                <span class="ativo"></span><span class="ativo"></span><span class="ativo"></span><span class="ativo"></span><span class="ativo"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card-cafe">
+        <img class="card-cafe-foto" src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=300&fit=crop" alt="Café Chapada Diamantina">
+        <div class="card-cafe-body">
+          <h3 class="card-cafe-nome">
+            Chapada Diamantina
+            <span style="vertical-align: middle; margin-left: 6px;" aria-label="grão de café" title="grão de café">
+              <!-- Ícone SVG de grão de café -->
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="vertical-align: middle;" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="10" cy="10" rx="7" ry="10" fill="#4a3528"/>
+                <path d="M9 2c0 5.25 1.5 9 3 16" stroke="#f5f0e8" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+            </span>
+          </h3>
+          <div class="card-cafe-meta">
+            <span class="card-cafe-notas"><strong>Notas:</strong> Frutado, floral, acidez viva</span>
+            <div class="card-cafe-intensidade">
+              <strong>Intensidade</strong>
+              <div class="intensidade-barras" aria-hidden="true">
+                <span class="ativo"></span><span class="ativo"></span><span class="ativo"></span><span></span><span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card-cafe">
+        <img class="card-cafe-foto" src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=400&h=300&fit=crop" alt="Café Matas de Minas">
+        <div class="card-cafe-body">
+          <h3 class="card-cafe-nome">Matas de Minas</h3>
+          <div class="card-cafe-meta">
+            <span class="card-cafe-notas"><strong>Notas:</strong> Chocolate, frutas vermelhas, corpo médio</span>
+            <div class="card-cafe-intensidade">
+              <strong>Intensidade</strong>
+              <div class="intensidade-barras" aria-hidden="true">
+                <span class="ativo"></span><span class="ativo"></span><span class="ativo"></span><span class="ativo"></span><span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card-cafe">
+        <img class="card-cafe-foto" src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=400&h=300&fit=crop" alt="Café Cerrado da Bahia">
+        <div class="card-cafe-body">
+          <h3 class="card-cafe-nome">Cerrado da Bahia</h3>
+          <div class="card-cafe-meta">
+            <span class="card-cafe-notas"><strong>Notas:</strong> Doce, amendoado, suave</span>
+            <div class="card-cafe-intensidade">
+              <strong>Intensidade</strong>
+              <div class="intensidade-barras" aria-hidden="true">
+                <span class="ativo"></span><span class="ativo"></span><span class="ativo"></span><span></span><span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </main>
+</body>
+</html>
